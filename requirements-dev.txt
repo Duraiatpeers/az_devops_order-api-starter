@@ -1,0 +1,10 @@
+-r requirements.txt
+pytest==9.1.1
+pytest-cov==7.1.0
+pytest-rerunfailures==16.7
+ruff==0.17.2
+bandit[sarif]
+xenon
+diff-cover
+pip-audit
+pip-licenses

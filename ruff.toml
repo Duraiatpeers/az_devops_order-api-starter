@@ -1,0 +1,10 @@
+# Lint + static analysis rules for orders-api (Module 4 quality gate)
+line-length = 120
+
+[lint]
+select = ["E", "F", "W", "B", "S"]   # pycodestyle, pyflakes, bugbear (likely bugs), bandit-style security
+
+[lint.per-file-ignores]
+# Accepted, reviewed exceptions - every line here needs a reason:
+"tests/**" = ["S101", "S310"]                  # pytest uses plain assert; smoke tests call the app URL
+"scripts/**" = ["S310", "S314", "S603", "S607"] # tooling deliberately calls git and the Azure DevOps REST API

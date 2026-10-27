@@ -1,0 +1,14 @@
+# Starter pipeline (Module 1). You replace this with your own CI pipeline in Module 3.
+trigger:
+  branches:
+    include: [main]
+
+pool:
+  vmImage: ubuntu-24.04     # pinned: ubuntu-latest moves to Ubuntu 26 from 19 Oct 2026
+
+steps:
+- script: |
+    echo "Commit:  $(Build.SourceVersion)"
+    echo "Branch:  $(Build.SourceBranchName)"
+    echo "Message: $(Build.SourceVersionMessage)"
+  displayName: Show what triggered this run

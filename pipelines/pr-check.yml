@@ -1,0 +1,23 @@
+# Trainer-supplied PR check (Module 2): runs the unit tests so a failing test blocks the PR.
+# Module 3 replaces it with the full CI pipeline you write yourself.
+trigger: none        # runs only through the Build validation branch policy
+pr: none
+
+pool:
+  vmImage: ubuntu-24.04
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.12'
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt pytest
+  displayName: Install dependencies
+- script: pytest -q --ignore=tests/smoke --junitxml=test-results.xml
+  displayName: Run unit + API tests
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: JUnit
+    testResultsFiles: test-results.xml

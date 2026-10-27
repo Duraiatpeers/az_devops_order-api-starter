@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.coverage
+coverage.xml
+htmlcov/
+test-results.xml
+.pytest_cache/
+.ruff_cache/
+release-readiness.*
+ai-pr-summary.md
+failure-triage.md
+infra/**/*.json
+.terraform/
+*.tfstate*
